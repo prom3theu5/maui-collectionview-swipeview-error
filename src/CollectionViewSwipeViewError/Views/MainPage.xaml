@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<views:BasePage x:TypeArguments="vm:MainPageViewModel"
+                x:DataType="vm:MainPageViewModel"
+                xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:vm="clr-namespace:CollectionViewSwipeViewError.ViewModels"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:views="clr-namespace:CollectionViewSwipeViewError.Views"
+                xmlns:models="clr-namespace:CollectionViewSwipeViewError.Models"
+                BackgroundColor="AntiqueWhite"
+                x:Class="CollectionViewSwipeViewError.Views.MainPage">
+    <Grid>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <CollectionView
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalScrollBarVisibility="Never"
+                            VerticalScrollBarVisibility="Never"
+                            ItemSizingStrategy="MeasureAllItems"
+                            CanReorderItems="False"
+                            IsGrouped="False"
+                            ItemsSource="{Binding LocalFileCollection}"
+                            SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="20" />
+                </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:LocalFile">
+                                <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItem Text="VIEW"
+                                               BackgroundColor="ForestGreen"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=ViewFileCommand}"
+                                               CommandParameter="{Binding .}" />
+                                    <SwipeItem Text="DELETE"
+                                               BackgroundColor="Salmon"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=DeleteFileCommand}"
+                                               CommandParameter="{Binding .}" />
+                                </SwipeView.RightItems>
+                                <Frame BackgroundColor="SlateGray"
+                                       BorderColor="DarkGray"
+                                       Padding="20"
+                                       CornerRadius="5">
+                                    <HorizontalStackLayout>
+                                        <Label Text="Filename:"
+                                               TextColor="LimeGreen"
+                                               HorizontalTextAlignment="Start"/>
+                                        <Label Margin="10,0,0,0"
+                                               Text="{Binding FileName}"
+                                               TextColor="Purple"/>
+                                    </HorizontalStackLayout>
+                                </Frame>
+                            </SwipeView>
+                        </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+            <Button
+                Text="Go To Page Two"
+                SemanticProperties.Hint="Navigates to the second page with the navigation service."
+                Command="{Binding GotoPageTwoCommand}"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </Grid>
+</views:BasePage>
