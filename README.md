@@ -1,5 +1,6 @@
 # Bug with CollectionView with Nested SwipeView under Windows
 
+For https://github.com/dotnet/maui/issues/9423
 
 * The MainViewModel loads, and populates the ObservableCollection, bound to the CollectionView.
 * Navigate to the second page with the button
