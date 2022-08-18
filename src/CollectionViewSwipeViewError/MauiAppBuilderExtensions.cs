@@ -1,11 +1,13 @@
-﻿namespace CollectionViewSwipeViewError;
+﻿using CommunityToolkit.Maui;
+
+namespace CollectionViewSwipeViewError;
 
 internal static class MauiAppBuilderExtensions
 {
     public static MauiAppBuilder RegisterViewsAndViewModels(this MauiAppBuilder builder)
     {
-        builder.Services.AddTransient<MainPage, MainPageViewModel>();
-        builder.Services.AddTransient<SecondPage, SecondPageViewModel>();
+        builder.Services.AddTransientWithShellRoute<MainPage, MainPageViewModel>(nameof(MainPage));
+        builder.Services.AddTransientWithShellRoute<SecondPage, SecondPageViewModel>(nameof(SecondPage));
 
         return builder;
     }

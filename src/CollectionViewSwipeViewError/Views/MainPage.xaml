@@ -31,17 +31,20 @@
                     <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:LocalFile">
                                 <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItem Text="VIEW"
-                                               BackgroundColor="ForestGreen"
-                                               Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=ViewFileCommand}"
-                                               CommandParameter="{Binding .}" />
-                                    <SwipeItem Text="DELETE"
-                                               BackgroundColor="Salmon"
-                                               Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=DeleteFileCommand}"
-                                               CommandParameter="{Binding .}" />
-                                </SwipeView.RightItems>
-                                <Frame BackgroundColor="SlateGray"
+                                    <SwipeView.RightItems>
+                                        <SwipeItems Mode="Reveal">
+                                            <SwipeItem Text="VIEW"
+                                                       BackgroundColor="ForestGreen"
+                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=ViewFileCommand}"
+                                                       CommandParameter="{Binding .}" />
+                                            <SwipeItem Text="DELETE"
+                                                       BackgroundColor="Salmon"
+                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainPageViewModel}}, Path=DeleteFileCommand}"
+                                                       CommandParameter="{Binding .}" />
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                               <SwipeView.Content>
+                                    <Frame BackgroundColor="SlateGray"
                                        BorderColor="DarkGray"
                                        Padding="20"
                                        CornerRadius="5">
@@ -54,6 +57,7 @@
                                                TextColor="Purple"/>
                                     </HorizontalStackLayout>
                                 </Frame>
+                               </SwipeView.Content>
                             </SwipeView>
                         </DataTemplate>
                         </CollectionView.ItemTemplate>

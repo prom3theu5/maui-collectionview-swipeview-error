@@ -8,7 +8,6 @@
 
     <ShellContent
         Title="Home"
-        Route="MainPage"
         ContentTemplate="{DataTemplate views:MainPage}" />
 
 </Shell>
